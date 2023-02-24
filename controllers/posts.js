@@ -1,5 +1,14 @@
 const { Post } = require("../models");
 
+const index = async (req, res) => {
+  try {
+    const posts = await Post.findAll();
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 const create = async (req, res) => {
   try {
     const post = await Post.create(req.body);
@@ -11,4 +20,5 @@ const create = async (req, res) => {
 
 module.exports = {
   create,
+  index,
 };
