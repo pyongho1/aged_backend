@@ -27,8 +27,19 @@ const show = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
+    await post.destroy();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 module.exports = {
   create,
   index,
   show,
+  delete: deletePost,
 };
