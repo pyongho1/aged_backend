@@ -20,7 +20,7 @@ module.exports = {
       },
       profileId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
+        allowNull: false,
         onDelete: "CASCADE",
         references: {
           model: "Profiles",
