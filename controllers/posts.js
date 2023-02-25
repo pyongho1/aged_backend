@@ -2,7 +2,9 @@ const { Post } = require("../models");
 
 const index = async (req, res) => {
   try {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({
+      order: [["createdAt", "DESC"]],
+    });
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json(error);
